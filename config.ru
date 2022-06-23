@@ -17,6 +17,8 @@ class App
       end
 
       response << '</ol>'
+
+      response <<  "<p>Running on RUBY_ENGINE: #{RUBY_ENGINE}</p>"
       
       [200, headers, response]
     end
