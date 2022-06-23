@@ -18,5 +18,6 @@ Use the `Dockfile.rack` in [rails-docker-oracle](https://github.com/bjfish/rails
 ## Run on OCI with Dockerfile
 1. Follow the steps to run the rails example migrations.
 2. Clone this project into the `Dockerfile.rack` directory: `git clone https://github.com/bjfish/rack-blog-oracle-db.git rackapp`
+3. Configure `user`, `password`, and `database_name` in the `config.ru` file.
 3. Build: `docker build -f Dockerfile.rack -t rbenv:rack .`
 4. Run `docker run -v /home/opc/wallet:/usr/lib/oracle/21/client64/lib/network/admin:Z,ro -d -p 3000:80 rbenv:rack`

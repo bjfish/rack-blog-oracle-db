@@ -1,7 +1,7 @@
 require 'oci8'
 
 
-OCI = OCI8.new('blog', '', 'blog_development')
+OCI = OCI8.new('username', 'password', 'database_name')
 
 class App
     def call(env)
@@ -10,8 +10,10 @@ class App
       }
       
       response = ['<h1>Hello World</h1>', '<ol>']
-      OCI.exec('select title from articles;').each do |r|
-        response << "<li>#{r.to_s}</li>"
+      OCI.exec('select title from articles') do |r|
+        r.each do |i|
+          response << "<li>#{i.to_s}</li>"
+        end
       end
 
       response << '</ol>'
@@ -21,4 +23,4 @@ class App
  end
  
  run App.new
- 
+
